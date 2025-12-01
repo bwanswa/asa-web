@@ -3,12 +3,13 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native-web";
 
 export default function Home() {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#f0f4f8", padding: 20 }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "#1c1c2e", padding: 20 }}>
+      {/* Main Layout */}
       <View
         style={{
           flexDirection: "row",
           gap: 20,
-          flexWrap: "wrap", // ensures responsiveness on smaller screens
+          flexWrap: "wrap",
         }}
       >
         {/* LEFT COLUMN */}
@@ -16,49 +17,46 @@ export default function Home() {
           {/* User Info */}
           <View
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#2a2a3d",
               padding: 20,
-              borderRadius: 10,
+              borderRadius: 12,
               marginBottom: 20,
-              shadowColor: "#000",
-              shadowOpacity: 0.05,
-              shadowRadius: 5,
             }}
           >
-            <Text style={{ fontSize: 22, fontWeight: "bold" }}>Jeff 🏆</Text>
-            <Text style={{ fontSize: 16, color: "#555" }}>Score: 63.15</Text>
+            <Text style={{ fontSize: 22, fontWeight: "bold", color: "#fff" }}>
+              Jeff 🏆
+            </Text>
+            <Text style={{ fontSize: 16, color: "#aaa" }}>Score: 63.15</Text>
           </View>
 
           {/* Upcoming Games */}
           <View
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#2a2a3d",
               padding: 20,
-              borderRadius: 10,
-              shadowColor: "#000",
-              shadowOpacity: 0.05,
-              shadowRadius: 5,
+              borderRadius: 12,
             }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "600", marginBottom: 15 }}>
+            <Text style={{ fontSize: 20, fontWeight: "600", color: "#fff", marginBottom: 15 }}>
               Upcoming Games
             </Text>
 
             {[
-              { teams: "West Ham vs Man City", time: "Sat 3:00 PM" },
-              { teams: "FC Utrecht vs AFC Ajax", time: "Sun 5:30 PM" },
-              { teams: "AS Monaco vs Toulouse", time: "Mon 8:00 PM" },
+              { teams: "West Ham vs Man City", date: "Sep 16" },
+              { teams: "FC Utrecht vs AFC Ajax", date: "Sep 17" },
+              { teams: "AS Monaco vs Lorient", date: "Sep 17" },
+              { teams: "Toulouse vs Lens", date: "Sep 17" },
             ].map((match, index) => (
               <View
                 key={index}
                 style={{
-                  paddingVertical: 10,
-                  borderBottomWidth: index < 2 ? 1 : 0,
-                  borderBottomColor: "#eee",
+                  paddingVertical: 12,
+                  borderBottomWidth: index < 3 ? 1 : 0,
+                  borderBottomColor: "#444",
                 }}
               >
-                <Text style={{ fontSize: 16 }}>{match.teams}</Text>
-                <Text style={{ fontSize: 14, color: "#888" }}>{match.time}</Text>
+                <Text style={{ fontSize: 16, color: "#fff" }}>{match.teams}</Text>
+                <Text style={{ fontSize: 14, color: "#888" }}>{match.date}</Text>
               </View>
             ))}
           </View>
@@ -68,21 +66,19 @@ export default function Home() {
         <View style={{ flex: 2, minWidth: 300 }}>
           <View
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#2a2a3d",
               padding: 20,
-              borderRadius: 10,
-              shadowColor: "#000",
-              shadowOpacity: 0.05,
-              shadowRadius: 5,
+              borderRadius: 12,
             }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "600", marginBottom: 15 }}>
+            <Text style={{ fontSize: 20, fontWeight: "600", color: "#fff", marginBottom: 15 }}>
               Place Your Bets
             </Text>
 
             {[
               { match: "FC Cartagena vs Real Betis", odds: "2.15" },
               { match: "Real Betis vs FC Cartagena", odds: "2.15" },
+              { match: "FC Cartagena vs Real Betis", odds: "2.15" },
               { match: "SC Freiburg vs FC Cartagena", odds: "2.15" },
             ].map((bet, index) => (
               <View
@@ -92,15 +88,13 @@ export default function Home() {
                   justifyContent: "space-between",
                   alignItems: "center",
                   paddingVertical: 12,
-                  borderBottomWidth: index < 2 ? 1 : 0,
-                  borderBottomColor: "#eee",
+                  borderBottomWidth: index < 3 ? 1 : 0,
+                  borderBottomColor: "#444",
                 }}
               >
                 <View>
-                  <Text style={{ fontSize: 16 }}>{bet.match}</Text>
-                  <Text style={{ fontSize: 14, color: "#888" }}>
-                    Odds: {bet.odds}
-                  </Text>
+                  <Text style={{ fontSize: 16, color: "#fff" }}>{bet.match}</Text>
+                  <Text style={{ fontSize: 14, color: "#888" }}>Odds: {bet.odds}</Text>
                 </View>
                 <TouchableOpacity
                   style={{
@@ -116,6 +110,24 @@ export default function Home() {
             ))}
           </View>
         </View>
+      </View>
+
+      {/* Bottom Navigation */}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          marginTop: 30,
+          paddingVertical: 15,
+          backgroundColor: "#2a2a3d",
+          borderRadius: 12,
+        }}
+      >
+        {["🏠", "🏆", "📅", "🪙"].map((icon, index) => (
+          <Text key={index} style={{ fontSize: 24, color: "#fff" }}>
+            {icon}
+          </Text>
+        ))}
       </View>
     </ScrollView>
   );
