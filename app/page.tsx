@@ -1,5 +1,6 @@
 "use client";
-import { View, Text, TouchableOpacity } from "react-native-web";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native-web";
+
 
 
 export default function Home() {
